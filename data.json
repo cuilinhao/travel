@@ -1,0 +1,470 @@
+$ maps_text_search
+{
+  "suggestion": {
+    "keywords": [],
+    "ciytes": []
+  },
+  "pois": [
+    {
+      "id": "B022F0ML6Z",
+      "name": "黄山风景区",
+      "address": "汤口镇汤泉路1号",
+      "typecode": "110201"
+    },
+    {
+      "id": "B0FFLNC75N",
+      "name": "黄山风景区2区",
+      "address": "中国黄山风景名胜区黄山温泉度假酒店",
+      "typecode": "110000"
+    },
+    {
+      "id": "B022F0NCGB",
+      "name": "黄山风景区北大门游客中心",
+      "address": "耿城镇汤泉路1号黄山风景区内(北侧)",
+      "typecode": "070201"
+    },
+    {
+      "id": "B022F0MDHO",
+      "name": "中国石化黄山风景区加油站",
+      "address": "汤口镇寨西村京台高速与103省道交叉口",
+      "typecode": "010101"
+    },
+    {
+      "id": "B0FFIW4WQI",
+      "name": "黄山风景区消防救援大队",
+      "address": "汤川路东50米",
+      "typecode": "130504"
+    },
+    {
+      "id": "B0LBKMM56V",
+      "name": "新国线黄山风景区-汽车站售票处",
+      "address": "中国石化黄山风景区加油站西北侧160米",
+      "typecode": "070306"
+    },
+    {
+      "id": "B022F00VLD",
+      "name": "中国移动(风景区寨西营业厅)",
+      "address": "汤口镇寨西村中国移动",
+      "typecode": "070603"
+    },
+    {
+      "id": "B0FFF470YY",
+      "name": "黄山风景区人工影响天气办公室",
+      "address": "汤口镇汤川路黄山万象酒店",
+      "typecode": "130100"
+    },
+    {
+      "id": "B0FFG72CMC",
+      "name": "易捷便利店(中国石化黄山风景区加油站店)",
+      "address": "中国石化黄山风景区加油站",
+      "typecode": "060200"
+    },
+    {
+      "id": "B022F0NCHT",
+      "name": "中国建设银行(黄山风景区支行)",
+      "address": "汤口镇沿溪西街9号(华艺酒店对面)",
+      "typecode": "160106"
+    },
+    {
+      "id": "B0I6PRCQUS",
+      "name": "黄山百川大酒店(汤口南门换乘中心店)停车点(入口)",
+      "address": "中国石化黄山风景区加油站东南侧130米",
+      "typecode": "150907"
+    },
+    {
+      "id": "B022F00OA6",
+      "name": "新安江山水画廊风景区",
+      "address": "深渡镇黄山大道",
+      "typecode": "110202"
+    },
+    {
+      "id": "B0JDSBPBRW",
+      "name": "黄山悦程国际旅行社有限公司(汤川徽韵商贸城店)",
+      "address": "中国石化黄山风景区加油站西侧110米",
+      "typecode": "070000"
+    },
+    {
+      "id": "B0HB1LHELV",
+      "name": "中国黄金旅游警务",
+      "address": "中国石化黄山风景区加油站南侧60米",
+      "typecode": "130506"
+    },
+    {
+      "id": "B0KBN5D2MV",
+      "name": "美宜佳(黄山南大门换乘中心如家商旅酒店店)",
+      "address": "中国石化黄山风景区加油站东南侧90米",
+      "typecode": "060200"
+    },
+    {
+      "id": "B0H0FSLI6R",
+      "name": "黄山明富大酒店停车点(入口)",
+      "address": "中国石化黄山风景区加油站东南侧90米",
+      "typecode": "150907"
+    },
+    {
+      "id": "B0FFK1UPSD",
+      "name": "正宗山西刀削面(汤川徽韵商贸城店)",
+      "address": "中国石化黄山风景区加油站西侧90米",
+      "typecode": "050100"
+    },
+    {
+      "id": "B022F0NCHX",
+      "name": "中国建设银行24小时自助银行(黄山风景区支行)",
+      "address": "汤口镇沿溪西街9号",
+      "typecode": "160303"
+    },
+    {
+      "id": "B0J339X8Y8",
+      "name": "中国农业银行(黄山景区支行)",
+      "address": "汤口镇汤泉路1号黄山风景区(东南角)",
+      "typecode": "160107"
+    },
+    {
+      "id": "B0JUFLUDEX",
+      "name": "黄山厚德驿站(汤川徽韵商贸城店)",
+      "address": "中国石化黄山风景区加油站西南侧160米",
+      "typecode": "100000"
+    }
+  ]
+}
+$ maps_search_detail
+{
+  "id": "B022F0ML6Z",
+  "name": "黄山风景区",
+  "location": "118.160164,30.139322",
+  "address": "汤口镇汤泉路1号",
+  "business_area": [],
+  "city": "黄山市",
+  "type": "风景名胜;风景名胜;世界遗产",
+  "alias": "安徽省黄山风景区|黃山风景区",
+  "rating": "4.9",
+  "cost": [],
+  "ticket_ordering": "0",
+  "open_time": [],
+  "opentime2": "3月2日-11月30日:周一-周五7:00-17:10；周六-周日及节假日:6:30-17:40；12月1日-12月31日:7:30-16:40；1月1日-3月1日:8:00-16:40；",
+  "level": "AAAAA"
+}
+$ maps_weather
+{
+  "city": "黄山市",
+  "forecasts": [
+    {
+      "date": "2025-04-22",
+      "week": "2",
+      "dayweather": "小雨",
+      "nightweather": "小雨",
+      "daytemp": "24",
+      "nighttemp": "17",
+      "daywind": "东北",
+      "nightwind": "东北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "24.0",
+      "nighttemp_float": "17.0"
+    },
+    {
+      "date": "2025-04-23",
+      "week": "3",
+      "dayweather": "晴",
+      "nightweather": "晴",
+      "daytemp": "28",
+      "nighttemp": "15",
+      "daywind": "东北",
+      "nightwind": "东北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "28.0",
+      "nighttemp_float": "15.0"
+    },
+    {
+      "date": "2025-04-24",
+      "week": "4",
+      "dayweather": "小雨",
+      "nightweather": "小雨",
+      "daytemp": "25",
+      "nighttemp": "15",
+      "daywind": "东北",
+      "nightwind": "东北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "25.0",
+      "nighttemp_float": "15.0"
+    },
+    {
+      "date": "2025-04-25",
+      "week": "5",
+      "dayweather": "多云",
+      "nightweather": "多云",
+      "daytemp": "21",
+      "nighttemp": "9",
+      "daywind": "东北",
+      "nightwind": "东北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "21.0",
+      "nighttemp_float": "9.0"
+    }
+  ]
+}
+$ speech_synthesis
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "link": "https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-platform-plugin-tos/artist/image/0aebeccb319c429bb34e8511a81ca911.mp3"
+  },
+  "x_aiplugin_extra_info": "{\"FLOW:workflow:called_plugin_ids\":\"{\\\"data\\\":\\\"[7426655854067351562]\\\",\\\"to_module_unit\\\":[]}\"}",
+  "log_id": "021745261106960fdbddc0200230160e258560227000038e4ec7c"
+}
+$ maps_text_search
+{
+  "suggestion": {
+    "keywords": [],
+    "ciytes": []
+  },
+  "pois": [
+    {
+      "id": "B0345001JL",
+      "name": "九寨沟",
+      "address": "漳扎镇",
+      "typecode": "110201"
+    },
+    {
+      "id": "B0J3DUI7H5",
+      "name": "中国农业银行(九寨沟景区支行)",
+      "address": "漳扎镇九寨沟口",
+      "typecode": "160107"
+    },
+    {
+      "id": "B034500JM7",
+      "name": "中国石油九寨沟长征加油站",
+      "address": [],
+      "typecode": "010102"
+    },
+    {
+      "id": "B0345005U3",
+      "name": "中国建设银行(九寨沟景区支行)",
+      "address": "边边街10-12号",
+      "typecode": "160106"
+    },
+    {
+      "id": "B0JUJ1XOBU",
+      "name": "中国建设银行(九寨沟县支行)",
+      "address": "301省道",
+      "typecode": "160106"
+    },
+    {
+      "id": "B034500X1K",
+      "name": "中国人寿(九寨沟支公司)",
+      "address": "九乐广场9号楼",
+      "typecode": "160402"
+    },
+    {
+      "id": "B034500592",
+      "name": "中国农业银行(九寨沟县支行营业部)",
+      "address": "滨江路15号",
+      "typecode": "160107"
+    },
+    {
+      "id": "B0FFJBHND2",
+      "name": "中国移动九寨沟县分公司",
+      "address": "文荟路与迎宾街交叉口北60米",
+      "typecode": "170000"
+    },
+    {
+      "id": "B0345004O1",
+      "name": "中国人民银行(九寨沟县支行)",
+      "address": "滨江路5号",
+      "typecode": "160101"
+    },
+    {
+      "id": "B0GD15MW8I",
+      "name": "九寨华美胜地旅游度假区",
+      "address": "漳扎镇中查沟九寨华美胜地旅游度假区",
+      "typecode": "080401"
+    },
+    {
+      "id": "B0FFHED0JJ",
+      "name": "九寨沟天然药业股份有限公司(漩囗)",
+      "address": "卧龙镇中国熊猫大道邓生沟内(东侧)",
+      "typecode": "170203"
+    },
+    {
+      "id": "B0345004O0",
+      "name": "中国人民银行九寨沟县支行办公楼",
+      "address": "临江路与中街交叉口东南100米",
+      "typecode": "120201"
+    },
+    {
+      "id": "B0FFL4FI0D",
+      "name": "中国邮政(九寨沟勿角邮政代办所)",
+      "address": "英各村84号",
+      "typecode": "070400"
+    },
+    {
+      "id": "B034500FPL",
+      "name": "中查沟",
+      "address": "漳扎镇",
+      "typecode": "190213"
+    },
+    {
+      "id": "B0K651HW76",
+      "name": "逸枫酒店(九寨沟游客中心店)",
+      "address": "中国漳扎镇301省道彭丰村1组74号",
+      "typecode": "100000"
+    },
+    {
+      "id": "B0FFLGQLYZ",
+      "name": "中国工商银行(九寨沟支行)",
+      "address": "文荟路66号",
+      "typecode": "160105"
+    },
+    {
+      "id": "B0H3US7GK8",
+      "name": "中国电信(九寨沟县漳扎镇标杆营业厅)",
+      "address": "漳扎派出所西北侧",
+      "typecode": "070601"
+    },
+    {
+      "id": "B034500X0S",
+      "name": "中国农业银行24小时自助银行(九寨沟景区支行)",
+      "address": "漳扎镇九寨沟口",
+      "typecode": "160304"
+    },
+    {
+      "id": "B0345003WC",
+      "name": "黄龙国家级风景名胜区",
+      "address": "瑟尔磋寨平松路",
+      "typecode": "110202"
+    },
+    {
+      "id": "B0HAKCK5FA",
+      "name": "松潘承臻善生态中药材种植专业合作社",
+      "address": "中国石油九寨沟长征加油站东北侧90米",
+      "typecode": "170400"
+    }
+  ]
+}
+$ maps_search_detail
+{
+  "id": "B0345001JL",
+  "name": "九寨沟",
+  "location": "103.912874,33.142376",
+  "address": "漳扎镇",
+  "business_area": [],
+  "city": "阿坝藏族羌族自治州",
+  "type": "风景名胜;风景名胜;世界遗产",
+  "alias": "四川九寨沟",
+  "rating": "4.9",
+  "cost": "169.00",
+  "ticket_ordering": "0",
+  "open_time": [],
+  "opentime2": "4月1日-11月15日:07:30-18:00；11月16日-3月31日:8:30-18:00",
+  "level": "AAAAA"
+}
+$ maps_weather
+{
+  "city": "阿坝藏族羌族自治州",
+  "forecasts": [
+    {
+      "date": "2025-04-22",
+      "week": "2",
+      "dayweather": "小雨",
+      "nightweather": "小雨",
+      "daytemp": "21",
+      "nighttemp": "5",
+      "daywind": "北",
+      "nightwind": "北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "21.0",
+      "nighttemp_float": "5.0"
+    },
+    {
+      "date": "2025-04-23",
+      "week": "3",
+      "dayweather": "小雨",
+      "nightweather": "小雨",
+      "daytemp": "18",
+      "nighttemp": "5",
+      "daywind": "北",
+      "nightwind": "北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "18.0",
+      "nighttemp_float": "5.0"
+    },
+    {
+      "date": "2025-04-24",
+      "week": "4",
+      "dayweather": "小雨",
+      "nightweather": "小雨",
+      "daytemp": "16",
+      "nighttemp": "5",
+      "daywind": "北",
+      "nightwind": "北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "16.0",
+      "nighttemp_float": "5.0"
+    },
+    {
+      "date": "2025-04-25",
+      "week": "5",
+      "dayweather": "小雨",
+      "nightweather": "小雨",
+      "daytemp": "19",
+      "nighttemp": "6",
+      "daywind": "北",
+      "nightwind": "北",
+      "daypower": "1-3",
+      "nightpower": "1-3",
+      "daytemp_float": "19.0",
+      "nighttemp_float": "6.0"
+    }
+  ]
+}
+$ speech_synthesis
+{
+  "code": 0,
+  "data": {
+    "link": "https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-platform-plugin-tos/artist/image/6a354cc087ee4be5945aa557e4cbc07f.mp3"
+  },
+  "log_id": "021745261232330fdbddc0200230160e258560227000038cff1bf",
+  "msg": "success",
+  "x_aiplugin_extra_info": "{\"FLOW:workflow:called_plugin_ids\":\"{\\\"data\\\":\\\"[7426655854067351562]\\\",\\\"to_module_unit\\\":[]}\"}"
+}
+$ maps_geo
+{
+  "return": [
+    {
+      "country": "中国",
+      "province": "安徽省",
+      "city": "黄山市",
+      "citycode": "0559",
+      "district": "黄山区",
+      "street": "汤泉路",
+      "number": [],
+      "adcode": "341003",
+      "location": "118.189678,30.084619",
+      "level": "门牌号"
+    }
+  ]
+}
+$ maps_geo
+{
+  "return": [
+    {
+      "country": "中国",
+      "province": "四川省",
+      "city": "阿坝藏族羌族自治州",
+      "citycode": "0837",
+      "district": "九寨沟县",
+      "street": [],
+      "number": [],
+      "adcode": "513225",
+      "location": "103.861238,33.295478",
+      "level": "乡镇"
+    }
+  ]
+}
