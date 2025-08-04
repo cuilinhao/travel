@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Globe, MapPin, Headphones, Cloud, Search, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ScenicLiveWebsite = () => {
+const App = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedScenic, setSelectedScenic] = useState(null);
@@ -76,9 +76,8 @@ const ScenicLiveWebsite = () => {
         '科罗拉多河漂流：独特体验'
       ]
     }
-  ];
-
-  useEffect(() => {
+  ];  
+useEffect(() => {
     if (window.AMap && mapContainerRef.current) {
       mapInstance.current = new window.AMap.Map(mapContainerRef.current, {
         viewMode: '3D',
@@ -86,7 +85,6 @@ const ScenicLiveWebsite = () => {
         center: [105, 35]
       });
 
-      // 添加标记点
       scenicSpots.forEach(spot => {
         new window.AMap.Marker({
           position: new window.AMap.LngLat(spot.location[0], spot.location[1]),
@@ -96,7 +94,6 @@ const ScenicLiveWebsite = () => {
         });
       });
 
-      // 添加缩放控件
       mapInstance.current.addControl(new window.AMap.Scale());
       mapInstance.current.addControl(new window.AMap.ToolBar());
     }
@@ -117,7 +114,6 @@ const ScenicLiveWebsite = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
-      {/* 导航栏 */}
       <nav className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center">
@@ -162,7 +158,6 @@ const ScenicLiveWebsite = () => {
           </button>
         </div>
         
-        {/* 移动端菜单 */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -201,11 +196,8 @@ const ScenicLiveWebsite = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
-
-      {/* 主内容区 */}
-      <main className="container mx-auto px-4 py-8">
-        {/* 搜索框 */}
+      </nav> 
+     <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <div className="relative max-w-2xl mx-auto">
             <input
@@ -223,7 +215,6 @@ const ScenicLiveWebsite = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {/* 地图展示区 */}
             <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
               <div className="p-4 border-b border-gray-200 flex items-center">
                 <MapPin className="text-blue-600 mr-2" size={20} />
@@ -232,7 +223,6 @@ const ScenicLiveWebsite = () => {
               <div ref={mapContainerRef} className="h-96 w-full"></div>
             </div>
 
-            {/* 热门推荐区 */}
             <div className="mb-8">
               <h2 className="text-xl font-semibold mb-4 flex items-center">
                 <span className="w-4 h-4 bg-blue-600 rounded-full mr-2"></span>
@@ -246,14 +236,9 @@ const ScenicLiveWebsite = () => {
                     className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
                     onClick={() => handleScenicSelect(scenic)}
                   >
-                    <div className="h-48 bg-gray-200 relative overflow-hidden">
-                      <img 
-                        src={`/api/coze_space/text2image?prompt=${encodeURIComponent(scenic.name + '风景')}&width=512&height=512`} 
-                        alt={scenic.name}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden flex items-center justify-center">
+                      <h3 className="text-white font-bold text-2xl">{scenic.name}</h3>
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                        <h3 className="text-white font-semibold text-lg">{scenic.name}</h3>
                         <p className="text-white/80 text-sm">{scenic.address}</p>
                       </div>
                     </div>
@@ -269,7 +254,6 @@ const ScenicLiveWebsite = () => {
               </div>
             </div>
 
-            {/* 天气信息区 */}
             <div className="bg-white rounded-xl shadow-md p-6">
               <h2 className="text-xl font-semibold mb-4 flex items-center">
                 <Cloud className="text-blue-600 mr-2" size={20} />
@@ -302,9 +286,8 @@ const ScenicLiveWebsite = () => {
               </div>
             </div>
           </motion.div>
-        )}
-
-        {activeTab === 'list' && (
+        )}    
+    {activeTab === 'list' && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -322,12 +305,8 @@ const ScenicLiveWebsite = () => {
                     onClick={() => handleScenicSelect(scenic)}
                   >
                     <div className="flex items-start">
-                      <div className="flex-shrink-0 h-16 w-16 bg-gray-200 rounded-md overflow-hidden mr-4">
-                        <img 
-                          src={`/api/coze_space/text2image?prompt=${encodeURIComponent(scenic.name + '风景')}&width=512&height=512`} 
-                          alt={scenic.name}
-                          className="w-full h-full object-cover"
-                        />
+                      <div className="flex-shrink-0 h-16 w-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md overflow-hidden mr-4 flex items-center justify-center">
+                        <span className="text-white font-bold text-xs">{scenic.name}</span>
                       </div>
                       <div className="flex-1">
                         <h3 className="font-medium text-gray-900">{scenic.name}</h3>
@@ -368,7 +347,6 @@ const ScenicLiveWebsite = () => {
               
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
                 <div className="lg:col-span-2">
-                  {/* 直播区 */}
                   <div className="mb-6">
                     <h3 className="text-lg font-medium mb-3 flex items-center">
                       <span className="w-3 h-3 bg-red-500 rounded-full mr-2 animate-pulse"></span>
@@ -380,11 +358,11 @@ const ScenicLiveWebsite = () => {
                         className="w-full h-96"
                         allowFullScreen
                         allow="autoplay"
+                        title={`${selectedScenic.name}直播`}
                       ></iframe>
                     </div>
                   </div>
                   
-                  {/* 景区介绍 */}
                   <div className="mb-6">
                     <h3 className="text-lg font-medium mb-3">景区介绍</h3>
                     <p className="text-gray-700 mb-4">{selectedScenic.description}</p>
@@ -399,7 +377,6 @@ const ScenicLiveWebsite = () => {
                 </div>
                 
                 <div>
-                  {/* 天气信息 */}
                   <div className="bg-gray-50 rounded-lg p-4 mb-6">
                     <h3 className="text-lg font-medium mb-3 flex items-center">
                       <Cloud className="mr-2" size={20} />
@@ -427,7 +404,6 @@ const ScenicLiveWebsite = () => {
                     </div>
                   </div>
                   
-                  {/* 地址信息 */}
                   <div className="bg-gray-50 rounded-lg p-4 mb-6">
                     <h3 className="text-lg font-medium mb-3 flex items-center">
                       <MapPin className="mr-2" size={20} />
@@ -439,7 +415,6 @@ const ScenicLiveWebsite = () => {
                     </button>
                   </div>
                   
-                  {/* 语音介绍 */}
                   {selectedScenic.audioUrl && (
                     <div className="bg-gray-50 rounded-lg p-4">
                       <h3 className="text-lg font-medium mb-3 flex items-center">
@@ -456,9 +431,8 @@ const ScenicLiveWebsite = () => {
               </div>
             </div>
           </motion.div>
-        )}
-
-        {activeTab === 'popular' && (
+        )}   
+     {activeTab === 'popular' && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -477,15 +451,10 @@ const ScenicLiveWebsite = () => {
                     className="border border-gray-200 rounded-lg overflow-hidden cursor-pointer"
                     onClick={() => handleScenicSelect(scenic)}
                   >
-                    <div className="aspect-w-16 aspect-h-9 bg-gray-200 relative">
-                      <img 
-                        src={`/api/coze_space/text2image?prompt=${encodeURIComponent(scenic.name + '风景')}&width=512&height=512`} 
-                        alt={scenic.name}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-blue-400 to-purple-500 relative h-48 flex items-center justify-center">
+                      <h3 className="text-white font-bold text-xl">{scenic.name}</h3>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
                         <div>
-                          <h3 className="text-white font-semibold">{scenic.name}</h3>
                           <p className="text-white/80 text-sm">{scenic.address}</p>
                         </div>
                       </div>
@@ -545,7 +514,6 @@ const ScenicLiveWebsite = () => {
         )}
       </main>
 
-      {/* 页脚 */}
       <footer className="bg-gray-100 border-t border-gray-200 py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -562,4 +530,4 @@ const ScenicLiveWebsite = () => {
   );
 };
 
-export default ScenicLiveWebsite;
+export default App;
