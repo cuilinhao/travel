@@ -9,6 +9,17 @@
     <title>全球景区直播</title>
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=d17c17f8f712c81a7e4241aff4faa7b0&plugin=AMap.Scale,AMap.ToolBar"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

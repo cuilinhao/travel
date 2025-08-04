@@ -150,7 +150,7 @@ useEffect(() => {
     return () => {
       mapInstance.current?.destroy();
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleScenicSelect = (scenic) => {
     setSelectedScenic(scenic);
