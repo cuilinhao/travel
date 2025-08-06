@@ -96,7 +96,7 @@ const App = () => {
       ]
     }
   ];
-useEffect(() => {
+  useEffect(() => {
     // 动态加载高德地图API
     const loadAMapScript = () => {
       return new Promise((resolve, reject) => {
@@ -216,7 +216,7 @@ useEffect(() => {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-        
+
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -263,8 +263,8 @@ useEffect(() => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav> 
-     <main className="container mx-auto px-4 py-8">
+      </nav>
+      <main className="container mx-auto px-4 py-8">
         {activeTab === 'home' && (
           <div className="space-y-8">
             {/* 地图区域 */}
@@ -376,7 +376,6 @@ useEffect(() => {
           </div>
         )}
 
-        )}
         {activeTab === 'list' && (
           <motion.div
             initial={{ opacity: 0 }}
