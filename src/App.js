@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Globe, MapPin, Headphones, Cloud, Search, Menu, X, Star, ChevronRight, Play } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from './hooks/useLanguage';
+import LanguageSwitcher from './components/LanguageSwitcher';
+import LiveStreamViewer from './components/LiveStreamViewer';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -8,94 +11,79 @@ const App = () => {
   const [selectedScenic, setSelectedScenic] = useState(null);
   const mapContainerRef = useRef(null);
   const mapInstance = useRef(null);
+  const { language, changeLanguage, t } = useLanguage();
 
-  const scenicSpots = [
-    {
-      id: 1,
-      name: '美国大峡谷',
-      location: '美国',
-      coordinates: [-112.1, 36.1],
-      address: '美国亚利桑那州',
-      description: '世界自然遗产，科罗拉多河切割形成的壮丽峡谷景观',
-      liveUrl: 'https://v.qq.com/x/cover/mzc003lxo9xui9l/p3538oyruut.html',
-      audioUrl: '',
-      weather: '晴, 25℃',
-      panoramaUrl: 'https://airpano.org.cn/360video/video-grand-canyon/',
-      highlights: [
-        '南缘：最受欢迎的观景点',
-        '玻璃天空步道：悬空观景平台',
-        '科罗拉多河漂流：独特体验'
-      ]
-    },
-    {
-      id: 2,
-      name: '澳大利亚大堡礁',
-      location: '澳大利亚',
-      coordinates: [146.26, -18.28],
-      address: '澳大利亚昆士兰州',
-      description: '世界最大最长的珊瑚礁群，世界七大自然景观之一',
-      liveUrl: 'https://www.acfun.cn/v/ac3423898_1',
-      audioUrl: '',
-      weather: '多云, 28℃',
-      panoramaUrl: 'https://airpano.org.cn/360video/video-great-barrier-reef/',
-      highlights: [
-        '心形礁：最著名的珊瑚礁景观',
-        '白天堂海滩：世界最美海滩之一',
-        '海洋生物：丰富的海洋生态系统'
-      ]
-    },
-    {
-      id: 3,
-      name: '中国黄山风景区',
-      location: '中国',
-      coordinates: [118.17, 30.13],
-      address: '安徽省黄山市汤口镇',
-      description: '以奇松、怪石、云海、温泉、冬雪五绝著称的世界遗产',
-      liveUrl: 'https://www.huangshan1.com/live',
-      audioUrl: 'https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-platform-plugin-tos/artist/image/0aebeccb319c429bb34e8511a81ca911.mp3',
-      weather: '小雨, 24℃',
-      panoramaUrl: '',
-      highlights: [
-        '迎客松：黄山标志性景观',
-        '光明顶：黄山第二高峰',
-        '飞来石：神奇的巨石景观'
-      ]
-    },
-    {
-      id: 4,
-      name: '中国九寨沟',
-      location: '中国',
-      coordinates: [103.92, 33.17],
-      address: '四川省阿坝藏族羌族自治州',
-      description: '以翠海、叠瀑、彩林、雪峰、藏情、蓝冰六绝著称',
-      liveUrl: 'https://www.jiuzhai.com/zhuanti/cloud/index.html',
-      audioUrl: 'https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-platform-plugin-tos/artist/image/6a354cc087ee4be5945aa557e4cbc07f.mp3',
-      weather: '小雨, 21℃',
-      panoramaUrl: '',
-      highlights: [
-        '五花海：九寨沟C位景点，碧绿湖水犹如碧玉',
-        '珍珠滩瀑布：86版《西游记》取景地',
-        '镜海：清晨如天空之镜般的梦幻景象'
-      ]
-    },
-    {
-      id: 5,
-      name: '中国故宫博物院',
-      location: '中国',
-      coordinates: [116.40, 39.92],
-      address: '北京市东城区景山前街4号',
-      description: '世界现存规模最大、保存最完整的木质结构古建筑群',
-      liveUrl: 'https://www.dpm.org.cn/liveBroadcast.html',
-      audioUrl: '',
-      weather: '晴, 22℃',
-      panoramaUrl: '',
-      highlights: [
-        '太和殿：紫禁城最重要的宫殿',
-        '御花园：皇家园林艺术典范',
-        '珍宝馆：珍贵文物收藏'
-      ]
-    }
-  ];
+  const getScenicSpots = () => {
+    return [
+      {
+        id: 1,
+        name: t('scenicSpots.1.name'),
+        location: t('scenicSpots.1.location'),
+        coordinates: [-112.1, 36.1],
+        address: t('scenicSpots.1.address'),
+        description: t('scenicSpots.1.description'),
+        liveUrl: 'https://v.qq.com/x/cover/mzc003lxo9xui9l/p3538oyruut.html',
+        audioUrl: '',
+        weather: `${t('sunny')}, 25℃`,
+        panoramaUrl: 'https://airpano.org.cn/360video/video-grand-canyon/',
+        highlights: t('scenicSpots.1.highlights')
+      },
+      {
+        id: 2,
+        name: t('scenicSpots.2.name'),
+        location: t('scenicSpots.2.location'),
+        coordinates: [146.26, -18.28],
+        address: t('scenicSpots.2.address'),
+        description: t('scenicSpots.2.description'),
+        liveUrl: 'https://www.acfun.cn/v/ac3423898_1',
+        audioUrl: '',
+        weather: `${t('cloudy')}, 28℃`,
+        panoramaUrl: 'https://airpano.org.cn/360video/video-great-barrier-reef/',
+        highlights: t('scenicSpots.2.highlights')
+      },
+      {
+        id: 3,
+        name: t('scenicSpots.3.name'),
+        location: t('scenicSpots.3.location'),
+        coordinates: [118.17, 30.13],
+        address: t('scenicSpots.3.address'),
+        description: t('scenicSpots.3.description'),
+        liveUrl: 'https://www.huangshan1.com/live',
+        audioUrl: 'https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-platform-plugin-tos/artist/image/0aebeccb319c429bb34e8511a81ca911.mp3',
+        weather: `${t('rainy')}, 24℃`,
+        panoramaUrl: '',
+        highlights: t('scenicSpots.3.highlights')
+      },
+      {
+        id: 4,
+        name: t('scenicSpots.4.name'),
+        location: t('scenicSpots.4.location'),
+        coordinates: [103.92, 33.17],
+        address: t('scenicSpots.4.address'),
+        description: t('scenicSpots.4.description'),
+        liveUrl: 'https://www.jiuzhai.com/zhuanti/cloud/index.html',
+        audioUrl: 'https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-platform-plugin-tos/artist/image/6a354cc087ee4be5945aa557e4cbc07f.mp3',
+        weather: `${t('rainy')}, 21℃`,
+        panoramaUrl: '',
+        highlights: t('scenicSpots.4.highlights')
+      },
+      {
+        id: 5,
+        name: t('scenicSpots.5.name'),
+        location: t('scenicSpots.5.location'),
+        coordinates: [116.40, 39.92],
+        address: t('scenicSpots.5.address'),
+        description: t('scenicSpots.5.description'),
+        liveUrl: 'https://www.dpm.org.cn/liveBroadcast.html',
+        audioUrl: '',
+        weather: `${t('sunny')}, 22℃`,
+        panoramaUrl: '',
+        highlights: t('scenicSpots.5.highlights')
+      }
+    ];
+  };
+
+  const scenicSpots = getScenicSpots();
   useEffect(() => {
     // 动态加载高德地图API
     const loadAMapScript = () => {
@@ -168,7 +156,7 @@ const App = () => {
           <div className="flex items-center">
             <Globe className="text-blue-400 mr-2" size={24} />
             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              全球景区直播
+              {t('title')}
             </h1>
           </div>
 
@@ -177,36 +165,39 @@ const App = () => {
               onClick={() => setActiveTab('home')}
               className={`${activeTab === 'home' ? 'text-blue-400' : 'text-white/70 hover:text-white'} transition-colors`}
             >
-              首页
+              {t('home')}
             </button>
             <button
               onClick={() => setActiveTab('list')}
               className={`${activeTab === 'list' ? 'text-blue-400' : 'text-white/70 hover:text-white'} transition-colors`}
             >
-              景区列表
+              {t('list')}
             </button>
             <button
               onClick={() => setActiveTab('popular')}
               className={`${activeTab === 'popular' ? 'text-blue-400' : 'text-white/70 hover:text-white'} transition-colors`}
             >
-              热门直播
+              {t('popular')}
             </button>
             <button
               onClick={() => setActiveTab('about')}
               className={`${activeTab === 'about' ? 'text-blue-400' : 'text-white/70 hover:text-white'} transition-colors`}
             >
-              关于我们
+              {t('about')}
             </button>
           </div>
 
-          {/* 搜索框 */}
-          <div className="hidden md:flex items-center bg-white/10 rounded-full px-4 py-2 w-64">
-            <Search className="text-white/50 mr-2" size={18} />
-            <input
-              type="text"
-              placeholder="搜索景区..."
-              className="bg-transparent border-none outline-none text-white placeholder-white/50 w-full"
-            />
+          {/* 搜索框和语言切换 */}
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="flex items-center bg-white/10 rounded-full px-4 py-2 w-64">
+              <Search className="text-white/50 mr-2" size={18} />
+              <input
+                type="text"
+                placeholder={t('search')}
+                className="bg-transparent border-none outline-none text-white placeholder-white/50 w-full"
+              />
+            </div>
+            <LanguageSwitcher language={language} onLanguageChange={changeLanguage} />
           </div>
 
           <button
@@ -231,33 +222,36 @@ const App = () => {
                   onClick={() => { setActiveTab('home'); setIsMobileMenuOpen(false); }}
                   className={`block w-full text-left py-2 ${activeTab === 'home' ? 'text-blue-400' : 'text-white'}`}
                 >
-                  首页
+                  {t('home')}
                 </button>
                 <button
                   onClick={() => { setActiveTab('list'); setIsMobileMenuOpen(false); }}
                   className={`block w-full text-left py-2 ${activeTab === 'list' ? 'text-blue-400' : 'text-white'}`}
                 >
-                  景区列表
+                  {t('list')}
                 </button>
                 <button
                   onClick={() => { setActiveTab('popular'); setIsMobileMenuOpen(false); }}
                   className={`block w-full text-left py-2 ${activeTab === 'popular' ? 'text-blue-400' : 'text-white'}`}
                 >
-                  热门直播
+                  {t('popular')}
                 </button>
                 <button
                   onClick={() => { setActiveTab('about'); setIsMobileMenuOpen(false); }}
                   className={`block w-full text-left py-2 ${activeTab === 'about' ? 'text-blue-400' : 'text-white'}`}
                 >
-                  关于我们
+                  {t('about')}
                 </button>
                 <div className="flex items-center bg-white/10 rounded-full px-4 py-2 mt-2">
                   <Search className="text-white/50 mr-2" size={18} />
                   <input
                     type="text"
-                    placeholder="搜索景区..."
+                    placeholder={t('search')}
                     className="bg-transparent border-none outline-none text-white placeholder-white/50 w-full"
                   />
+                </div>
+                <div className="pt-2">
+                  <LanguageSwitcher language={language} onLanguageChange={changeLanguage} />
                 </div>
               </div>
             </motion.div>
@@ -277,7 +271,7 @@ const App = () => {
               <div ref={mapContainerRef} className="w-full h-full"></div>
               <div className="absolute top-4 left-4 bg-black/50 text-white px-4 py-2 rounded-lg backdrop-blur-sm">
                 <Globe className="inline mr-2" size={20} />
-                <span>全球景区分布</span>
+                <span>{t('globalDistribution')}</span>
               </div>
             </motion.div>
 
@@ -285,7 +279,7 @@ const App = () => {
             <div>
               <h2 className="text-2xl font-bold mb-6 flex items-center">
                 <Star className="mr-2 text-yellow-500" size={24} />
-                热门景区直播
+                {t('popularScenic')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {scenicSpots.slice(0, 3).map(spot => (
@@ -306,7 +300,7 @@ const App = () => {
                       </div>
                       <div className="absolute top-4 right-4 z-20 bg-black/50 text-white px-2 py-1 rounded-full text-sm flex items-center">
                         <Play className="mr-1" size={14} />
-                        <span>直播中</span>
+                        <span>{t('live')}</span>
                       </div>
                       <div className="w-full h-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
                         <span className="text-white text-4xl font-bold opacity-20">{spot.name}</span>
@@ -319,7 +313,7 @@ const App = () => {
                           <span>{spot.weather}</span>
                         </div>
                         <button className="text-sm bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition-colors">
-                          立即观看
+                          {t('watchNow')}
                         </button>
                       </div>
                       <p className="text-sm text-white/80 line-clamp-2">{spot.description}</p>
@@ -334,13 +328,13 @@ const App = () => {
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold flex items-center">
                   <MapPin className="mr-2 text-blue-500" size={24} />
-                  全部景区
+                  {t('allScenic')}
                 </h2>
                 <button
                   className="text-blue-400 hover:text-blue-300 flex items-center"
                   onClick={() => setActiveTab('list')}
                 >
-                  查看全部 <ChevronRight size={18} />
+                  {t('viewAll')} <ChevronRight size={18} />
                 </button>
               </div>
               <div className="space-y-4">
@@ -384,7 +378,7 @@ const App = () => {
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-xl shadow-md overflow-hidden">
               <div className="p-4 border-b border-white/10">
-                <h2 className="text-xl font-semibold text-white">景区列表</h2>
+                <h2 className="text-xl font-semibold text-white">{t('list')}</h2>
               </div>
               <div className="divide-y divide-white/10">
                 {scenicSpots.map(scenic => (
@@ -429,7 +423,7 @@ const App = () => {
               className="flex items-center text-blue-400 hover:text-blue-300"
             >
               <ChevronRight className="rotate-180 mr-1" size={18} />
-              返回
+              {t('back')}
             </button>
 
             {/* 景区标题 */}
@@ -446,27 +440,22 @@ const App = () => {
 
             {/* 直播区域 */}
             <div className="bg-black/30 rounded-xl overflow-hidden shadow-xl">
-              <div className="relative pt-[56.25%]">
-                <iframe
-                  src={selectedScenic.liveUrl}
-                  className="absolute top-0 left-0 w-full h-full"
-                  frameBorder="0"
-                  allowFullScreen
-                  allow="autoplay; fullscreen"
-                  title={`${selectedScenic.name}直播`}
-                ></iframe>
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/70 to-transparent"></div>
-              </div>
+              <LiveStreamViewer 
+                liveUrl={selectedScenic.liveUrl}
+                scenicName={selectedScenic.name}
+                language={language}
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/70 to-transparent pointer-events-none"></div>
               <div className="p-4">
                 <div className="flex justify-between items-center">
                   <button className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full flex items-center text-white">
                     <Play className="mr-2" size={16} />
-                    <span>观看直播</span>
+                    <span>{t('watchLive')}</span>
                   </button>
                   {selectedScenic.audioUrl && (
                     <button className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full flex items-center text-white">
                       <Headphones className="mr-2" size={16} />
-                      <span>语音导览</span>
+                      <span>{t('audioGuide')}</span>
                     </button>
                   )}
                 </div>
@@ -475,9 +464,9 @@ const App = () => {
 
             {/* 景区介绍 */}
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h2 className="text-xl font-bold mb-4 text-white">景区介绍</h2>
+              <h2 className="text-xl font-bold mb-4 text-white">{t('scenicIntro')}</h2>
               <p className="text-white/80 leading-relaxed mb-4">{selectedScenic.description}</p>
-              <h3 className="text-lg font-semibold mb-3 text-white">特色景点</h3>
+              <h3 className="text-lg font-semibold mb-3 text-white">{t('highlights')}</h3>
               <ul className="space-y-2">
                 {selectedScenic.highlights.map((item, i) => (
                   <li key={i} className="text-white/80 flex items-start">
@@ -489,23 +478,23 @@ const App = () => {
             </div>
             {/* 天气信息 */}
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h2 className="text-xl font-bold mb-4 text-white">天气信息</h2>
+              <h2 className="text-xl font-bold mb-4 text-white">{t('weatherInfo')}</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-blue-900/30 rounded-lg p-4 text-center">
-                  <div className="text-sm text-blue-300 mb-1">今日天气</div>
+                  <div className="text-sm text-blue-300 mb-1">{t('todayWeather')}</div>
                   <div className="text-2xl font-bold text-white">{selectedScenic.weather.split(',')[0]}</div>
                 </div>
                 <div className="bg-blue-900/30 rounded-lg p-4 text-center">
-                  <div className="text-sm text-blue-300 mb-1">当前温度</div>
+                  <div className="text-sm text-blue-300 mb-1">{t('currentTemp')}</div>
                   <div className="text-2xl font-bold text-white">{selectedScenic.weather.split(',')[1]}</div>
                 </div>
                 <div className="bg-blue-900/30 rounded-lg p-4 text-center">
-                  <div className="text-sm text-blue-300 mb-1">适宜度</div>
-                  <div className="text-2xl font-bold text-white">适宜</div>
+                  <div className="text-sm text-blue-300 mb-1">{t('suitability')}</div>
+                  <div className="text-2xl font-bold text-white">{t('suitable')}</div>
                 </div>
                 <div className="bg-blue-900/30 rounded-lg p-4 text-center">
-                  <div className="text-sm text-blue-300 mb-1">紫外线</div>
-                  <div className="text-2xl font-bold text-white">中等</div>
+                  <div className="text-sm text-blue-300 mb-1">{t('uvIndex')}</div>
+                  <div className="text-2xl font-bold text-white">{t('moderate')}</div>
                 </div>
               </div>
             </div>
@@ -513,7 +502,7 @@ const App = () => {
             {/* 360°全景 */}
             {selectedScenic.panoramaUrl && (
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-                <h2 className="text-xl font-bold mb-4 text-white">360°全景体验</h2>
+                <h2 className="text-xl font-bold mb-4 text-white">{t('panorama360')}</h2>
                 <div className="relative pt-[56.25%] rounded-lg overflow-hidden">
                   <iframe
                     src={selectedScenic.panoramaUrl}
@@ -531,11 +520,11 @@ const App = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <h2 className="text-xl font-bold mb-4 text-white flex items-center">
                   <Headphones className="mr-2" size={20} />
-                  语音介绍
+                  {t('audioGuide')}
                 </h2>
                 <audio controls className="w-full">
                   <source src={selectedScenic.audioUrl} type="audio/mpeg" />
-                  您的浏览器不支持音频元素。
+                  {t('browserNotSupported')}
                 </audio>
               </div>
             )}
@@ -549,7 +538,7 @@ const App = () => {
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-xl shadow-md overflow-hidden">
               <div className="p-4 border-b border-white/10">
-                <h2 className="text-xl font-semibold text-white">热门直播</h2>
+                <h2 className="text-xl font-semibold text-white">{t('popular')}</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
@@ -569,7 +558,7 @@ const App = () => {
                       </div>
                       <div className="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-xs flex items-center">
                         <span className="w-2 h-2 bg-white rounded-full mr-1 animate-pulse"></span>
-                        直播中
+                        {t('live')}
                       </div>
                     </div>
                     <div className="p-4">
@@ -579,7 +568,7 @@ const App = () => {
                           {scenic.weather}
                         </span>
                         <button className="text-sm bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded-full text-white transition-colors">
-                          观看
+                          {t('watchNow')}
                         </button>
                       </div>
                       <p className="text-white/70 line-clamp-2">{scenic.description}</p>
@@ -598,44 +587,44 @@ const App = () => {
             transition={{ duration: 0.5 }}
             className="bg-white/10 backdrop-blur-sm rounded-xl shadow-md p-8"
           >
-            <h2 className="text-2xl font-bold mb-6 text-white">关于我们</h2>
+            <h2 className="text-2xl font-bold mb-6 text-white">{t('aboutTitle')}</h2>
 
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-3 text-white">网站介绍</h3>
+              <h3 className="text-xl font-semibold mb-3 text-white">{t('websiteIntro')}</h3>
               <p className="text-white/80 mb-4">
-                全球景区直播平台是一个专注于提供世界各地著名景区实时直播的网站。我们整合了全球各大景区的公开直播资源，让用户足不出户就能欣赏到世界各地的自然风光和人文景观。
+                {t('websiteDesc1')}
               </p>
               <p className="text-white/80">
-                我们的目标是打造一个科技感十足的旅游直播平台，为用户提供沉浸式的旅游体验，同时为计划出行的游客提供实用的景区信息和参考。
+                {t('websiteDesc2')}
               </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-3 text-white">技术特点</h3>
+              <h3 className="text-xl font-semibold mb-3 text-white">{t('techFeatures')}</h3>
               <ul className="space-y-2 text-white/80">
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  采用最新的Web技术，提供流畅的直播体验
+                  {t('feature1')}
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  交互式地图展示全球景区分布
+                  {t('feature2')}
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  响应式设计，适配各种设备
+                  {t('feature3')}
                 </li>
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  整合天气、语音导览等实用信息
+                  {t('feature4')}
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-3 text-white">联系我们</h3>
-              <p className="text-white/80 mb-2">如有任何问题或建议，欢迎通过以下方式联系我们：</p>
-              <p className="text-white/80">邮箱：contact@sceniclive.com</p>
+              <h3 className="text-xl font-semibold mb-3 text-white">{t('contactUs')}</h3>
+              <p className="text-white/80 mb-2">{t('contactDesc')}</p>
+              <p className="text-white/80">{t('email')}</p>
             </div>
           </motion.div>
         )}
@@ -644,7 +633,7 @@ const App = () => {
       <footer className="bg-black/50 border-t border-white/10 py-6">
         <div className="container mx-auto px-4 text-center text-white/50 text-sm">
           <p>
-            created by <a href="https://space.coze.cn" className="text-blue-400 hover:text-blue-300">coze space</a> | 页面内容均由 AI 生成，仅供参考
+            created by <a href="https://space.coze.cn" className="text-blue-400 hover:text-blue-300">coze space</a> | {t('footerText')}
           </p>
         </div>
       </footer>
